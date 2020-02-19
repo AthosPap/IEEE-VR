@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.vrow.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "S:\\Users\\TheBeastReborn\\Desktop\\VRow\\VRow\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "VRow [Testing]"
+        }
+      }
+    }
+  ]
+}
