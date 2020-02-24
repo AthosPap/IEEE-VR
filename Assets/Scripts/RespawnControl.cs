@@ -50,8 +50,14 @@ public class RespawnControl : MonoBehaviour
     }
     void Respawn()
     { 
-        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         tr.SetPositionAndRotation(pos, dir);
+        StartCoroutine(Waiting());
+        gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+    }
+
+    IEnumerator Waiting()
+    {
+        yield return new WaitForSeconds(1.5f);
     }
 }

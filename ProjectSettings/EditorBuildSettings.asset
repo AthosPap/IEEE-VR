@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Scene_1.unity
     guid: e6ce38b68bfdf254cb69b723b0ef0a51
   - enabled: 0
-    path: Assets/CityVoxelPack/DemoScenes/Demo.unity
+    path: Assets/Models/CityVoxelPack/DemoScenes/Demo.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

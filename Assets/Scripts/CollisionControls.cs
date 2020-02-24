@@ -26,11 +26,12 @@ public class CollisionControls : MonoBehaviour
             isColliding = true;
             other.GetComponent<MeshRenderer>().material = myCam.GetComponent<GUIControl>().ghostMaterial2;
         }
-        else if (other.tag == "CheckPoint")
+        else if (other.tag == "checkpoint")
         {
+            
             GetComponent<RespawnControl>().dir = other.GetComponent<CheckPointBehaviour>().direction;
             GetComponent<RespawnControl>().pos = other.GetComponent<CheckPointBehaviour>().position;
-            GetComponent<CheckPointBehaviour>().activated = true;
+            other.GetComponent<CheckPointBehaviour>().activated = true;
    
         }
     }

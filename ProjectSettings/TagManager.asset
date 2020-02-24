@@ -9,7 +9,8 @@ TagManager:
   - moveable
   - CrossingGhost
   - NoCrossing
-  - CheckPoint
+  - StreetlightGhost
+  - checkpoint
   layers:
   - Default
   - TransparentFX
