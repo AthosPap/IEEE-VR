@@ -13,4 +13,4 @@ Github Desktop helps
 
 * Spyros - ssiannas@gmail.com
 * Athos - 
-* Paul - 
+* Pavlos - pav.hatzisavvas@gmail.com
