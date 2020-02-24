@@ -12,7 +12,7 @@ public class RespawnControl : MonoBehaviour
     public Vector3 pos;
     public Quaternion dir;
     private bool isRespawning = false;
-    public GameObject LastCheckPoint = null;
+
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +57,7 @@ public class RespawnControl : MonoBehaviour
     }
 
     IEnumerator Waiting()
-    {
-        yield return new WaitForSeconds(1.5f);
+    {   
+        yield return new WaitForSeconds(1);
     }
 }

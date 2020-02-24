@@ -32,6 +32,7 @@ public class CollisionControls : MonoBehaviour
             GetComponent<RespawnControl>().dir = other.GetComponent<CheckPointBehaviour>().direction;
             GetComponent<RespawnControl>().pos = other.GetComponent<CheckPointBehaviour>().position;
             other.GetComponent<CheckPointBehaviour>().activated = true;
+            myCam.GetComponent<GUIControl>().nextCheckpoint = true;
    
         }
     }
