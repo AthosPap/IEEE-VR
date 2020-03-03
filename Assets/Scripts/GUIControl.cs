@@ -38,6 +38,7 @@ public class GUIControl : MonoBehaviour
 
     public Camera myCamera;
     private int buildingIndex; //which building will be placed
+    private bool isUnlocked;
     private Material mat;
 
     private Vector3 originalScale; // ghost original scale
@@ -268,6 +269,24 @@ public class GUIControl : MonoBehaviour
         }
 
     }
+
+    public void ButtonHandler(int Btn)
+    {
+        switch (Btn)
+        {
+            case 1:
+
+                if (currentUnlock > 0) AssignBuilding(Btn);
+                break;
+            case 2:
+                if (currentUnlock > 1) SetMoveMode();
+                break;
+            case 3:
+                if (currentUnlock > 2) AssignBuilding(Btn);
+                break;
+        }
+    }
+
 
     public void AssignBuilding(int BuildingIndex) //Enable Building mode for specific object.
     {
