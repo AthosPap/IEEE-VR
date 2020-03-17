@@ -8,7 +8,11 @@ public class GUIControl : MonoBehaviour
 {
     public Text monitxt;
     public int moni = 5000;
-
+    public bool nextCheckpoint = false;
+    private int currentUnlock = 0;
+    public GameObject myGUI;
+    public List<Button> myBtn;
+    private Button[] temp;
     public GameObject Wheelchair;
 
 
@@ -34,6 +38,7 @@ public class GUIControl : MonoBehaviour
 
     public Camera myCamera;
     private int buildingIndex; //which building will be placed
+    private bool isUnlocked;
     private Material mat;
 
     private Vector3 originalScale; // ghost original scale
@@ -52,6 +57,8 @@ public class GUIControl : MonoBehaviour
     void Start()
     {
         originalPos = new Vector3(-100, -100, -100);
+        GUI_Init();
+        LoadGUI();
     }
 
 
@@ -60,6 +67,7 @@ public class GUIControl : MonoBehaviour
     void Update()
     {
         monitxt.text = "" + moni.ToString();
+        if (nextCheckpoint) NextCP();
         //Move Function
         if (currentlyMoving)
         {
@@ -199,6 +207,7 @@ public class GUIControl : MonoBehaviour
             currentMove.layer = OldLayer;
             isBeingMoved = false;
             currentlyMoving = false;
+            originalPos = new Vector3(-100, -100, -100);
         }
         else
         {
@@ -235,11 +244,15 @@ public class GUIControl : MonoBehaviour
 
     public void CancelMove()
     {
-        if (currentMove != null && originalPos != new Vector3(-100, -100, -100)) currentMove.GetComponent<Transform>().position = originalPos;
-        currentMove.GetComponent<MeshRenderer>().material = mat;
-        currentMove.layer = OldLayer;
+        if (currentMove != null && originalPos != new Vector3(-100, -100, -100))
+        {
+            currentMove.GetComponent<Transform>().position = originalPos;
+            currentMove.GetComponent<MeshRenderer>().material = mat;
+            currentMove.layer = OldLayer;
+        }
         isBeingMoved = false;
         currentlyMoving = false;
+        originalPos = new Vector3(-100, -100, -100);
     }
 
     public void SetMoveMode() //Start Move mode
@@ -256,6 +269,24 @@ public class GUIControl : MonoBehaviour
         }
 
     }
+
+    public void ButtonHandler(int Btn)
+    {
+        switch (Btn)
+        {
+            case 1:
+
+                if (currentUnlock > 0) AssignBuilding(Btn);
+                break;
+            case 2:
+                if (currentUnlock > 1) SetMoveMode();
+                break;
+            case 3:
+                if (currentUnlock > 2) AssignBuilding(Btn);
+                break;
+        }
+    }
+
 
     public void AssignBuilding(int BuildingIndex) //Enable Building mode for specific object.
     {
@@ -299,7 +330,31 @@ public class GUIControl : MonoBehaviour
                 ghost.transform.localScale = new Vector3(0, 0, 0);
             }
         }
+    }
 
+    //CheckPoint Functions
+    public void NextCP()
+    {
+        currentUnlock += 1;
+        LoadGUI();
+        nextCheckpoint = false;
+    }
 
+    private void LoadGUI()
+    {
+        for (int i = 0; i < currentUnlock; i++)
+        {
+            Button btn = myBtn[i].GetComponent<Button>();
+            btn.GetComponent<BtnCtrl>().isUnlocked = true;
+        }
+    }
+
+    private void GUI_Init()
+    {
+        foreach (Transform child in myGUI.transform) { 
+            temp = child.gameObject.GetComponentsInChildren<Button>();
+            if (temp[0]) myBtn.Add(temp[0]);
+            
+        }   
     }
 }

@@ -47,6 +47,7 @@ public class DeathMenu : MonoBehaviour
         transition = 0.0f;
         phase = 1;
         VRfromBlack();
+        gameObject.SetActive(false);
     }
 
 
