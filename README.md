@@ -12,5 +12,5 @@ Github Desktop helps
 ## E-Mails for quick contact
 
 * Spyros - ssiannas@gmail.com
-* Athos - papanikolaouathos@gmail.com
+* Athos - 
 * Pavlos - pav.hatzisavvas@gmail.com
